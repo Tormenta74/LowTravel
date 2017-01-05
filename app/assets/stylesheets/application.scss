@@ -16,6 +16,8 @@ body {
 #content-container {
   background-color: $main-color3;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 // Header
@@ -28,13 +30,14 @@ $min-nav-height: 50px;
     width: 100%;
 }
 
-.affix + .container-fluid {
+#header.affix + .container-fluid {
     padding-top: $min-nav-height;
 }
 
 #header {
     border-radius: 0;
     background-color: $main-color4;
+    margin-bottom: 0;
 }
 
 // Navbar
