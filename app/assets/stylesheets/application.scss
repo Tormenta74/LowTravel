@@ -1,3 +1,40 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@import "colors";
+
+body {
+  width: 100%;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+}
+
+#content-container {
+  background-color: $main-color3;
+  width: 100%;
+}
+
+// Header
+
+$min-nav-height: 50px;
+
+#header.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.affix + .container-fluid {
+    padding-top: $min-nav-height;
+}
+
+#header {
+    border-radius: 0;
+    background-color: $main-color4;
+}
+
+// Navbar
