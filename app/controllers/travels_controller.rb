@@ -1,5 +1,6 @@
 class TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index] # with devise method
 
   # GET /travels
   # GET /travels.json
@@ -24,7 +25,7 @@ class TravelsController < ApplicationController
   # POST /travels
   # POST /travels.json
   def create
-    @travel = Travel.new(travel_params)
+    @travel = current_user.travels.new(travel_params)
 
     respond_to do |format|
       if @travel.save
@@ -40,6 +41,7 @@ class TravelsController < ApplicationController
   # PATCH/PUT /travels/1
   # PATCH/PUT /travels/1.json
   def update
+    @travel = current_user.travels.find_by_id(params[:id])
     respond_to do |format|
       if @travel.update(travel_params)
         format.html { redirect_to @travel, notice: 'Travel was successfully updated.' }
@@ -69,6 +71,6 @@ class TravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
-      params.require(:travel).permit(:title, :content, :user_id)
+      params.require(:travel).permit(:title, :content)
     end
 end

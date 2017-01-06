@@ -13,11 +13,18 @@ body {
   position: relative;
 }
 
+.message {
+  color: #888888;
+  text-align: center;
+  margin: 10px auto;
+}
+
 #content-container {
   background-color: $main-color3;
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 $page-header-height: 80px;
@@ -25,68 +32,81 @@ $page-header-height: 80px;
 // Logo
 
 #logo {
-    height: #{$page-header-height*0.7};
-    border-radius: 5px;
-    margin-top: 5px;
+  height: #{$page-header-height*0.7};
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 // Header
 
 
 #header {
-    height: $page-header-height;
-    min-height: $page-header-height;
-    background-color: $main-color4;
-    margin: 0;
-    padding: #{$page-header-height*0.1};
-    button {
-        float: right;
-        margin: #{($page-header-height - 10px)*0.25} 5px;
-        a {
-            text-decoration: none;
-        }
+  height: $page-header-height;
+  min-height: $page-header-height;
+  background-color: $main-color4;
+  margin: 0;
+  padding: #{$page-header-height*0.1};
+  .login {
+    float: right;
+    margin: #{($page-header-height - 10px)*0.25} 5px;
+    a {
+      text-decoration: none;
     }
-    .page-brand {
-        float: left;
-        margin-left: 20px;
+  }
+  .page-brand {
+    float: left;
+    margin-left: 20px;
+  }
+  h1 {
+    float: left;
+    margin: 6px 40px; 
+  }
+  ul.social-links > li {
+    list-style-type: none;
+    float: right;
+    a > img {
+      width: #{$page-header-height*0.5};
+      margin: #{($page-header-height - 10px)*0.2} 5px;
     }
-    h1 {
-        float: left;
-        margin: 6px 40px; 
-    }
-    ul.social-links > li {
-        list-style-type: none;
-        float: right;
-        a > img {
-            width: #{$page-header-height*0.5};
-            margin: #{($page-header-height - 10px)*0.2} 5px;
-        }
-    }
+  }
 }
 
 @media all and (max-width: 900px) {
-    #header > h1 {
-        display: none;
-    }
+  #header > h1 {
+    display: none;
+  }
+}
+
+@media all and (max-width: 500px) {
+  ul.social-links > li {
+    display: none;
+  }
 }
 
 // Navbar
 
 .affix {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .affix + * {
-    padding-top: $page-header-height;
+  padding-top: $page-header-height;
 }
 
 span.icon-bar {
-    background-color: invert($main-color4);
+  background-color: invert($main-color4);
 }
 
 .form {
-    margin: 0 auto;
-    width: 20%;
+  margin: 0 auto;
+  width: 20%;
+}
+
+// Rest
+
+textarea {
+  width: 90%;
+  height: 400px;
 }
