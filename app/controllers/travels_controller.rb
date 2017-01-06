@@ -1,5 +1,6 @@
 class TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index] # with devise method
 
   # GET /travels
   # GET /travels.json
