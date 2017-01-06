@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @travel.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= markdown(@travel.content) %>
+</p>
+
+<p>
+  <strong>by:</strong>
+  <%= User.find_by_id(@travel.user_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>
