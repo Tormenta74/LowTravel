@@ -39,7 +39,7 @@ $page-header-height: 80px;
     background-color: $main-color4;
     margin: 0;
     padding: #{$page-header-height*0.1};
-    button {
+    .login {
         float: right;
         margin: #{($page-header-height - 10px)*0.25} 5px;
         a {

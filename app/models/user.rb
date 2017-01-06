@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  validates :name, uniqueness: true
-  validates :email, uniqueness: {case_sensitive: false}, length: { minimum: 6 }, format: {multiline: true, with: /\A\S+@.+\.\S+\z/, message: 'Invalid email format'}
-
-  has_many :travels
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  validates :name, uniqueness: {case_sensitive: false}
 end
