@@ -1,0 +1,32 @@
+<%= form_for(travel) do |f| %>
+  <% if travel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+
+      <ul>
+      <% travel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="field">
+        <%= f.text_area :content %>
+      </div>
+      <p class="message">This content is actually be written in <a href="https://daringfireball.net/projects/markdown/">Markdown</a>. If you want to make it prettier, here is a useful <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">guide</a>.</p>
+    </div>
+  </div>
+
+<% end %>
