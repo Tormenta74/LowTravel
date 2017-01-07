@@ -3,4 +3,6 @@ class Travel < ApplicationRecord
   validates :content, length: {in: 150..7000}
 
   belongs_to :user
+
+  scope :most_recent, -> { order(published_at: :desc) }
 end

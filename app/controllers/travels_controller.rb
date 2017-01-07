@@ -5,7 +5,7 @@ class TravelsController < ApplicationController
   # GET /travels
   # GET /travels.json
   def index
-    @travels = Travel.all
+    @travels = Travel.most_recent
   end
 
   # GET /travels/1
