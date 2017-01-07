@@ -5,4 +5,13 @@ class Travel < ApplicationRecord
   belongs_to :user
 
   scope :most_recent, -> { order(published_at: :desc) }
+  scope :published, -> { where(published: true) }
+
+  def publish
+    update(published: true, published_at: Time.now)
+  end
+
+  def hide
+    update(published: false, published_at: nil)
+  end
 end

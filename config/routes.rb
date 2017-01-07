@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :travels
   devise_for :users
+  resources :travels do
+    put 'publish' => 'travels#publish'
+    put 'hide' => 'travels#hide'
+  end
 
   get '/home' => 'pages#home', as: '/'
   get '/about' => 'pages#about', as: 'about'

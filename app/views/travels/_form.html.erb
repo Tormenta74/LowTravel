@@ -19,6 +19,11 @@
       </div>
       <div class="actions">
         <%= f.submit %>
+        <% if !travel.published %>
+          <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'btn btn-success' %>
+        <% else %>
+          <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'btn btn-success' %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">

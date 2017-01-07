@@ -1,11 +1,13 @@
 class TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :set_travel_publish, only: [:publish, :hide] # this is really weird and I don't know how to get the routes to use the :id params
   before_action :authenticate_user!, except: [:show, :index] # with devise method
+  # TODO: before_action :authenticate_admin!, only: [:publish, :hide] # with devise method
 
   # GET /travels
   # GET /travels.json
   def index
-    @travels = Travel.most_recent
+    @travels = Travel.most_recent.published
   end
 
   # GET /travels/1
@@ -20,6 +22,16 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
+  end
+
+  def publish
+    @travel.publish
+    redirect_to travels_path
+  end
+
+  def hide
+    @travel.hide
+    redirect_to travels_path
   end
 
   # POST /travels
@@ -67,6 +79,10 @@ class TravelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_travel
       @travel = Travel.find(params[:id])
+    end
+
+    def set_travel_publish
+      @travel = Travel.find_by_id(params[:travel_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
