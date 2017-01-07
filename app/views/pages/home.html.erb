@@ -5,15 +5,15 @@
     </aside>
   </div>
   <div class="col-md-6 travel text-center">
-    <% if last_travel = Travel.last %>
+    <% if !@last_travel.nil? %>
       <h2>
-        <%= link_to last_travel.title, travel_path(last_travel) %> <small>by <%= User.find_by_id(last_travel.user_id).name %></small>
-        <% if current_user == last_travel.user_id %>
-          <%= link_to 'Edit', edit_travel_path(last_travel)%>
+        <%= link_to @last_travel.title, travel_path(@last_travel) %> <small>by <%= User.find_by_id(@last_travel.user_id).name %></small>
+        <% if current_user == @last_travel.user_id %>
+          <%= link_to 'Edit', edit_travel_path(@last_travel)%>
         <% end %>
       </h2>
       <p>
-        <%= markdown(last_travel.content) %>
+        <%= markdown(@last_travel.content) %>
       </p>
     <% else %>
       <h2>There are no posts yet <span class="glyphicon glyphicon-plane"></span></h2>
@@ -22,3 +22,4 @@
   </div>
   <div class="col-md-3"></div>
 </div>
+<%= console %>

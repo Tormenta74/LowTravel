@@ -19,10 +19,12 @@
       </div>
       <div class="actions">
         <%= f.submit %>
-        <% if !travel.published %>
-          <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'btn btn-success' %>
-        <% else %>
-          <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'btn btn-success' %>
+        <% if !travel.new_record? %>
+          <% if !travel.published and !travel.new_record? %>
+            <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'btn btn-success' %>
+          <% else %>
+            <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'btn btn-success' %>
+          <% end %>
         <% end %>
       </div>
     </div>
