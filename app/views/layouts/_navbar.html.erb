@@ -1,5 +1,4 @@
-<!-- navigation bar -->
-<nav id="header" class="navbar" data-spy="affix" data-offset-top="70">
+<nav id="navigate" class="navbar" data-spy="affix" data-offset-top="<%= navbar_offset %>">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -12,18 +11,15 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav nav-justified">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li>
-          <form class="form">
-            <input type="text" class="form-control" placeholder="Search for...">
+        <li><%= link_to 'Inicio', root_path %></li>
+        <li><%= link_to 'LowCost', travels_path %></li>
+        <li><%= link_to 'Internacional', travels_path %></li>
+        <li><%= link_to 'Nacional', travels_path %></li>
+        <li><form class="navbar-form" role="search">
+            <%= search_field_tag :keywords, params[:keywords], class:'form-control', maxlength: 128, placeholder: "Search..." %>
           </form>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<!-- /navigation bar -->
-

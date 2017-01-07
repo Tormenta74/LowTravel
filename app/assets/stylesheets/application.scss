@@ -24,7 +24,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 $page-header-height: 80px;
@@ -67,6 +67,7 @@ $page-header-height: 80px;
     a > img {
       width: #{$page-header-height*0.5};
       margin: #{($page-header-height - 10px)*0.2} 5px;
+      border-radius: 10px;
     }
   }
 }
@@ -85,6 +86,8 @@ $page-header-height: 80px;
 
 // Navbar
 
+$navbar-height: 50px;
+
 .affix {
   position: fixed;
   top: 0;
@@ -99,9 +102,23 @@ span.icon-bar {
   background-color: invert($main-color4);
 }
 
-.form {
-  margin: 0 auto;
-  width: 20%;
+#navigate {
+  opacity: 1;
+  z-index: 999;
+  background-color: $main-color1;
+  font-size: 185%;
+  .nav-justified {
+    height: $navbar-height;
+    width: 100%;
+    & > li {
+      display: table-cell;
+      width: 20%;
+      height: $navbar-height;
+    }
+  }
+  li:hover > a {
+    background-color: darken($main-color1,10);
+  }
 }
 
 // Rest
@@ -109,4 +126,18 @@ span.icon-bar {
 textarea {
   width: 90%;
   height: 400px;
+}
+
+.first-row {
+  margin: 0;
+}
+
+.travel {
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: blue;
+    }
+  }
 }
