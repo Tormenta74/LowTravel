@@ -24,7 +24,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  //overflow-x: hidden;
+  min-height: 1600px;
 }
 
 $page-header-height: 80px;
@@ -146,11 +146,13 @@ textarea {
 }
 
 .travel {
-  a {
-    color: black;
-    text-decoration: none;
-    &:hover {
-      color: blue;
+  .facade {
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        color: blue;
+      }
     }
   }
   img {
@@ -158,10 +160,17 @@ textarea {
   }
 }
 
+a.edit-travel {
+  font-size: 90%;
+  color: grey;
+  text-decoration: none;
+  &:hover {
+    background-color: lighten(black,20);
+    color: darken(white,20);
+  }
+}
+
 .edit-user {
-  //.row {
-  //  border-bottom: 1px solid white;
-  //}
   textarea {
     height: 150px !important;
   } 

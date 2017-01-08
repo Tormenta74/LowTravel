@@ -1,17 +1,19 @@
-<div class="facade">
-  <%= image_tag(@travel.facade, size: "300x200") if @travel.facade.present? %>
+<%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
+<div class="row single-column-row">
+  <div class="col-md-2">
+    <p>
+      Ipsum a molestiae incidunt amet consequuntur? Non voluptatum eos tempora voluptate nisi, corrupti natus quo! Maiores atque sed sit laudantium totam. Quia ea id alias quibusdam distinctio accusantium sequi Mollitia velit error maiores ea maiores laborum? Accusantium id molestiae ducimus dolore deleniti itaque? Consequatur mollitia praesentium neque ratione accusantium Voluptatem reiciendis placeat distinctio autem veniam repudiandae! Similique ipsa temporibus quidem inventore facere? Aliquam quos rerum nostrum unde impedit! Iste illum tempora quam repellat id necessitatibus.
+    </p>
+    
+  </div>
+  <div class="col-md-8">
+    <%= render @travel %>
+  </div>
+  <div class="col-md-2">
+    <p>
+      Ipsum a molestiae incidunt amet consequuntur? Non voluptatum eos tempora voluptate nisi, corrupti natus quo! Maiores atque sed sit laudantium totam. Quia ea id alias quibusdam distinctio accusantium sequi Mollitia velit error maiores ea maiores laborum? Accusantium id molestiae ducimus dolore deleniti itaque? Consequatur mollitia praesentium neque ratione accusantium Voluptatem reiciendis placeat distinctio autem veniam repudiandae! Similique ipsa temporibus quidem inventore facere? Aliquam quos rerum nostrum unde impedit! Iste illum tempora quam repellat id necessitatibus.
+    </p>
+  </div>
 </div>
-<p>
-  <strong><%= @travel.title %></strong> <small>by <%= link_to User.find_by_id(@travel.user_id).name %></small> 
-</p>
 
-<p>
-  <%= markdown(@travel.content) %>
-</p>
-
-<p>
-</p>
-
-<%= link_to 'Edit', edit_travel_path(@travel) %> |
-<%= link_to 'Back', travels_path %>
-<%= console %>
+<%= link_to 'All travels', travels_path %>

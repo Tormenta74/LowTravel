@@ -1,0 +1,14 @@
+<div class="well travel">
+  <div class="facade">
+    <%= image_tag(travel.facade) if travel.facade.present? %>
+    <h2>
+      <%= link_to travel.title, travel_path(travel) %>
+      <small>by <%= User.find_by_id(travel.user_id).name %></small>
+    </h2>
+  </div>
+  <p><%= markdown(travel.content) %></p>
+  <% if travel.user == current_user %>
+    <%= link_to 'edit', edit_travel_path(travel), class: 'edit-travel' %>
+  <% end %>
+</div>
+
