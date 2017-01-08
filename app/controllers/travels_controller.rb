@@ -7,7 +7,11 @@ class TravelsController < ApplicationController
   # GET /travels
   # GET /travels.json
   def index
-    @travels = Travel.most_recent.published
+    if params[:tag]
+      @travels = Travel.published.tagged_with(params[:tag])
+    else
+      @travels = Travel.most_recent.published
+    end
   end
 
   # GET /travels/1
@@ -89,6 +93,6 @@ class TravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
-      params.require(:travel).permit(:title, :content, :facade)
+      params.require(:travel).permit(:title, :content, :facade, :tag_list)
     end
 end

@@ -7,6 +7,8 @@
     </h2>
   </div>
   <p><%= markdown(travel.content) %></p>
+  <h4>Etiquetas</h4>
+  <p><%= raw travel.tag_list.map{ |t| link_to t, tag_path(t) }.join(' ') %></p>
   <% if travel.user == current_user %>
     <%= link_to 'edit', edit_travel_path(travel), class: 'edit-travel' %>
   <% end %>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     put 'hide' => 'travels#hide'
   end
 
+  get 'tags/:tag' => 'travels#index', as: :tag
+
   get '/home' => 'pages#home', as: '/'
   get '/about' => 'pages#about', as: 'about'
 

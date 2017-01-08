@@ -1,4 +1,5 @@
 class Travel < ApplicationRecord
+  acts_as_taggable
   mount_uploader :facade, FacadeUploader
     validates :title, length: {in: 4..40}, uniqueness: {case_sensitive: false}
     validates :content, length: {in: 150..7000}
