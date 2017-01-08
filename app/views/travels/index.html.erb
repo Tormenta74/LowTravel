@@ -1,5 +1,5 @@
 <% @travels.each do |travel| %>
-  <div class="row first-row">
+  <div class="row single-column-row">
     <%= link_to travel.title, travel_path(travel) %> <small>by <%= User.find_by_id(travel.user_id).name %></small>
     <% if current_user == travel.user_id %>
       <%= link_to 'Edit', edit_travel_path(travel)%>

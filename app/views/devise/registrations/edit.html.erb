@@ -1,43 +1,63 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row single-column-row edit-user text-center">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="col-md-6 col-md-offset-1">
+      <div class="row">
+        <div class="col-sm-8">
+          <img class="img-responsive" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="300" height="300"><br>
+          <%= f.text_field :name, :readonly => true %>
+        </div>
+        <div class="col-sm-4">
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email %>
+          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :current_password %><br />
+            <%= f.password_field :current_password, autocomplete: "off" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Update" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-3 col-md-offset-1">
+      <div class="field">
+        <%= f.label :bio %><br>
+        <%= f.text_area :bio %>
+      </div>
+      <div class="field">
+        <%= f.label :webpage %><br>
+        <%= f.text_field :webpage %>
+      </div>
+    </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
+</div>
 <hr>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "This action cannot be undone. Do you want to continue?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="row single-column-row text-center">
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "This action cannot be undone. Do you want to continue?" }, method: :delete %></p>
+</div>

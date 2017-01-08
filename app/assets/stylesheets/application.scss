@@ -121,6 +121,15 @@ span.icon-bar {
   }
 }
 
+// Slider
+
+.carousel {
+  img {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 // Rest
 
 textarea {
@@ -128,7 +137,7 @@ textarea {
   height: 400px;
 }
 
-.first-row {
+.single-column-row {
   margin: 0;
 }
 
@@ -140,4 +149,13 @@ textarea {
       color: blue;
     }
   }
+}
+
+.edit-user {
+  //.row {
+  //  border-bottom: 1px solid white;
+  //}
+  textarea {
+    height: 150px !important;
+  } 
 }

@@ -1,0 +1,20 @@
+<div id="slider" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @slides_providers.each_with_index do |travel,i| %>
+      <li data-target="#slider" data-slide-to="<%= i %>" class="<%= i == 0 ? 'active' : '' %>"></li>
+    <% end %>
+  </ol>
+ 
+  <div class="carousel-inner">
+    <% @slides_providers.each_with_index do |travel,i| %>
+      <div class="item <%= i == 0 ? 'active' : '' %>">
+        <img src="http://placehold.it/1200x315" alt="...">
+        <div class="carousel-caption">
+          <h3><%= travel.title %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script>
+</script>
