@@ -1,20 +1,24 @@
 <div id="slider" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <% @slides_providers.each_with_index do |travel,i| %>
-      <li data-target="#slider" data-slide-to="<%= i %>" class="<%= i == 0 ? 'active' : '' %>"></li>
-    <% end %>
-  </ol>
- 
-  <div class="carousel-inner">
-    <% @slides_providers.each_with_index do |travel,i| %>
-      <div class="item <%= i == 0 ? 'active' : '' %>">
-        <img src="http://placehold.it/1200x315" alt="...">
-        <div class="carousel-caption">
-          <h3><%= travel.title %></h3>
+  <% if @slides_providers.count > 0 %>
+    <ol class="carousel-indicators">
+      <% @slides_providers.each_with_index do |travel,i| %>
+        <li data-target="#slider" data-slide-to="<%= i %>" class="<%= i == 0 ? 'active' : '' %>"></li>
+      <% end %>
+    </ol>
+
+    <div class="carousel-inner">
+      <% @slides_providers.each_with_index do |travel,i| %>
+        <div class="item <%= i == 0 ? 'active' : '' %>">
+          <% if travel.facade.present? %>
+            <%= image_tag(travel.facade) %>
+          <% else %>
+            <img src="http://placehold.it/1200x315" alt="...">
+          <% end %>
+          <div class="carousel-caption">
+            <h3><%= travel.title %></h3>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-<script>
-</script>

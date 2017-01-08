@@ -124,9 +124,13 @@ span.icon-bar {
 // Slider
 
 .carousel {
-  img {
-    width: 100%;
-    margin: 0 auto;
+  .carousel-inner > .item {
+    overflow-y: hidden;
+    height: 300px;
+    & > img {
+      width: 100%;
+      margin: auto;
+    }
   }
 }
 
@@ -148,6 +152,9 @@ textarea {
     &:hover {
       color: blue;
     }
+  }
+  img {
+    width: 100%;
   }
 }
 
