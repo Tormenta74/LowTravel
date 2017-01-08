@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'redcarpet', '~> 3.4'
 gem 'devise'
 gem 'validates_timeliness', '~> 4.0'
+gem 'carrierwave', '~> 1.0'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

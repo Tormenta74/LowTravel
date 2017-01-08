@@ -8,6 +8,7 @@
   </div>
   <div class="col-md-6 travel text-center">
     <% if !@last_travel.nil? %>
+      <%= image_tag(@last_travel.facade, size: "300x200") if @last_travel.facade.present? %>
       <h2>
         <%= link_to @last_travel.title, travel_path(@last_travel) %> <small>by <%= User.find_by_id(@last_travel.user_id).name %></small>
         <% if current_user == @last_travel.user_id %>
@@ -24,3 +25,4 @@
   </div>
   <div class="col-md-3"></div>
 </div>
+<%= console %>

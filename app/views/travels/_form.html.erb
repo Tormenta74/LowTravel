@@ -17,6 +17,10 @@
         <%= f.label :title %>
         <%= f.text_field :title %>
       </div>
+      <div class="field">
+        <%= f.label :facade %>
+        <%= f.file_field :facade %>
+      </div>
       <div class="actions">
         <%= f.submit %>
         <% if !travel.new_record? %>
