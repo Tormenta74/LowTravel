@@ -1,7 +1,0 @@
-<h1><%= @user.name %></h1>
-<div class="row single-column-row profile">
-  <div class="col-md-4 col-md-offset-4 well">
-    <img src="/assets/traveller-placeholder-300x300" alt="">
-    <h2><%= @user.name %></h2>
-  </div>
-</div>

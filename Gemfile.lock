@@ -188,6 +188,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 4.0)
+  autoprefixer-rails (~> 6.6)
   bootstrap-sass (~> 3.3.6)
   byebug
   carrierwave!

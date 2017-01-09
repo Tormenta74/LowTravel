@@ -1,4 +1,4 @@
-<div id="slider" class="carousel slide" data-ride="carousel">
+<div id="slider" class="carousel slide" data-ride="carousel" data-interval="4300">
   <% if @slides_providers.count > 0 %>
     <ol class="carousel-indicators">
       <% @slides_providers.each_with_index do |travel,i| %>
@@ -15,7 +15,7 @@
             <img src="http://placehold.it/1200x315" alt="...">
           <% end %>
           <div class="carousel-caption">
-            <h3><%= travel.title %></h3>
+            <h3><%= link_to travel.title, travel %></h3>
           </div>
         </div>
       <% end %>

@@ -9,6 +9,7 @@ class TravelsController < ApplicationController
   def index
     if params[:tag]
       @travels = Travel.published.tagged_with(params[:tag])
+      flash[:notice] = "No hay viajes con esta etiqueta." unless @travels
     else
       @travels = Travel.most_recent.published
     end
@@ -32,12 +33,12 @@ class TravelsController < ApplicationController
 
   def publish
     @travel.publish
-    redirect_to travels_path
+    render :edit
   end
 
   def hide
     @travel.hide
-    redirect_to travels_path
+    render :edit
   end
 
   # POST /travels

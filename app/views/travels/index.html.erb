@@ -1,21 +1,7 @@
 <%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
 <div class="row single-column-row">
   <div class="col-md-8 col-md-offset-1">
-    <% @travels.each do |travel| %>
-      <div class="row travel-index">
-        <div class="col-sm-4 travel-info">
-          <%= link_to image_tag(travel.facade) if travel.facade.present? %>
-          <h3><%= link_to travel.title, travel %> <small>by <%= User.find_by_id(travel.user_id).name %></small>
-            <% if current_user == travel.user %>
-              <%= link_to 'Edit', edit_travel_path(travel)%>
-            <% end %></h3>
-          <p><%= raw travel.tag_list.map{ |t| link_to t, tag_path(t) }.join(' ') %></p>
-        </div>
-        <div class="col-sm-8 travel-content">
-          <p><%= markdown(travel.content) %></p>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'indexed', travels: @travels %>
   </div>
   <div class="col-md-3">
     <aside></aside>
@@ -25,3 +11,4 @@
 <br>
 
 <%= link_to 'New Travel', new_travel_path %>
+<%= console %>

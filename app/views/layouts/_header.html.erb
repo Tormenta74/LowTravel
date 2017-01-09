@@ -2,7 +2,7 @@
 <div id="header">
   <a href="/home" class="page-brand"><img src="/assets/logo.png" alt="" id="logo"></a>
   <% if user_signed_in? %>
-    <span class="login">Signed in as <%= link_to current_user.name, edit_user_registration_path %></span>
+    <span class="login">Signed in as <%= link_to current_user.name, current_user %></span>
     <%= link_to 'Sign out', destroy_user_session_path, method: :delete, :class => 'btn btn-default login' %>
   <% else %>
     <%= link_to 'Sign up!', new_user_registration_path, :class => 'btn btn-default login' %>

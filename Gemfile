@@ -20,6 +20,7 @@ gem 'devise'
 gem 'validates_timeliness', '~> 4.0'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'acts-as-taggable-on', '~>4.0'
+gem 'autoprefixer-rails', '~> 6.6'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

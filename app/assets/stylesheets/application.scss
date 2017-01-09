@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin: 0;
   padding: 0;
-  min-height: 1600px;
+  min-height: 1000px;
 }
 
 $page-header-height: 80px;
@@ -131,6 +131,12 @@ span.icon-bar {
   z-index: 999;
   background-color: $main-color1;
   font-size: 185%;
+  .main-link {
+    text-decoration: none;
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .nav-justified {
     height: $navbar-height;
     width: 100%;
@@ -143,6 +149,14 @@ span.icon-bar {
   li:hover > a {
     background-color: darken($main-color1,10);
   }
+  #collapse {
+    overflow-y: hidden;
+  }
+  #collapse.in {
+    .navbar-form {
+      display: none;
+    }
+  }
 }
 
 // Slider
@@ -152,8 +166,18 @@ span.icon-bar {
     overflow-y: hidden;
     height: 300px;
     & > img {
-      width: 100%;
+      min-height: 300px;
+      width: auto;
       margin: auto;
+    }
+  }
+  .carousel-caption {
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      color: white;
     }
   }
 }
@@ -189,46 +213,67 @@ textarea {
     max-height: 300px;
   }
 
+  p {
+    font-size: 110%;
+  }
+}
 
-  // ---- This took INCREDIBLY long to produce
-  .facade-container {
+// ---- This took INCREDIBLY long to produce
+.facade-container {
+  position: relative;
+  .facade-image {
     position: relative;
-    .facade-image {
-      position: relative;
-      display: inline-block;
-    }
-    .facade-image:after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top,
-                  rgba(255,255,255,1),
-                  rgba(255,255,255,0.95),
-                  rgba(255,255,255,0.5),
-                  rgba(255,255,255,0));
+    display: inline-block;
+  }
+  .facade-image:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+    rgba(255,255,255,1),
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0));
+    pointer-events: none;
+    //pointer: cursor;
 
-      img {
-        display: block;
-        height: 250px; // replace in media-queries
-        width: auto;
-      }
+    img {
+      display: block;
+      height: 250px; // replace in media-queries
+      width: auto;
     }
-    .facade-link {
-      position: absolute;
-      bottom: 5%;
-      margin-left: 5%;
-    }
+  }
+  .facade-link {
+    a {text-decoration: none;}
+    position: absolute;
+    bottom: 5%;
+    margin-left: 5%;
+  }
+}
+
+.profile .facade-image:after {
+  background: linear-gradient(to top,
+              rgba(255,255,255,1),
+              rgba(255,255,255,0.3),
+              rgba(255,255,255,0.1),
+              rgba(255,255,255,0));
+}
+
+@media all and(max-width: 650px) {
+  .travel .facade-container .facade-link {
+    margin-left: 5px;
+    text-align: left;
   }
 }
 
 .travel-index {
   background-color: $main-color5;
   border-radius: 2px;
-  padding: 15px 0;
+  padding: 15px;
   a {
     text-decoration: none;
     cursor: pointer;
@@ -238,11 +283,11 @@ textarea {
   }
   .travel-info {
     & > * {
-      border-bottom: 1px solid black;
+      min-height: 20px;
     }
   }
   .travel-content {
-    border-left: 1px solid white;
+    border-left: 3px solid white;
   }
   &, row {
     margin-bottom: 20px;
@@ -265,7 +310,7 @@ a.edit-travel {
   } 
 }
 
-.registrations.edit {
+.registrations {
   a {
     text-decoration: none;
   }
@@ -334,3 +379,60 @@ a.edit-travel {
     width: 80%;
   }
 }
+
+.tags {
+  a {
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+  }
+  a:hover {
+    display: inline-block;
+    background-color: $main-color5;
+    transform: scale(1.1) translateY(-5px);
+  }
+}
+.empty-tags {
+  color: grey;
+}
+
+.travel-form {
+  a {
+    text-decoration: none;
+  }
+  .public {
+    display: inline-block;
+    background-color: $main-color2;
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  input[type="text"] {
+    width: 80%;
+  }
+  .travel-fields {
+    padding-left: 20px;
+  }
+  textarea {
+    padding: 10px;
+    width: 90%;
+    max-width: 90%;
+    height: 400px;
+    max-height: 400px;
+  }
+  .field, .actions {
+    font-size: 110%;
+    margin-top: 20px;
+  }
+}
+
+.profile {
+  .facade-image {
+    border: 5px solid white;
+    border-radius: 6px;
+  }
+}
+
