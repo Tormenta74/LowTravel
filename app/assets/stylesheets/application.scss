@@ -29,6 +29,11 @@ body {
   position: relative;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
 .message {
   color: #888888;
   text-align: center;
@@ -164,14 +169,16 @@ textarea {
   margin: 0;
 }
 
+.profile {
+  padding: 50px;
+}
+
 .travel {
-  .facade {
-    a {
-      color: black;
-      text-decoration: none;
-      &:hover {
-        color: blue;
-      }
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: blue;
     }
   }
   img {
@@ -180,6 +187,41 @@ textarea {
   .thumbnail {
     max-width: 300px;
     max-height: 300px;
+  }
+
+
+  // ---- This took INCREDIBLY long to produce
+  .facade-container {
+    position: relative;
+    .facade-image {
+      position: relative;
+      display: inline-block;
+    }
+    .facade-image:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top,
+                  rgba(255,255,255,1),
+                  rgba(255,255,255,0.95),
+                  rgba(255,255,255,0.5),
+                  rgba(255,255,255,0));
+
+      img {
+        display: block;
+        height: 250px; // replace in media-queries
+        width: auto;
+      }
+    }
+    .facade-link {
+      position: absolute;
+      bottom: 5%;
+      margin-left: 5%;
+    }
   }
 }
 

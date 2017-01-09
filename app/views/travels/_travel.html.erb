@@ -1,16 +1,28 @@
-<div class="well travel">
-  <div class="facade">
-    <%= image_tag(travel.facade) if travel.facade.present? %>
-    <h2>
+<div class="travel well">
+
+  <%# ---- This was a piece of work. Showing some respect ---- %>
+
+  <div class="facade-container">
+    <div class="facade-image">
+      <%= image_tag(travel.facade) if travel.facade.present? %>
+    </div>
+    <h2 class="facade-link">
       <%= link_to travel.title, travel_path(travel) %>
       <small>by <%= User.find_by_id(travel.user_id).name %></small>
     </h2>
   </div>
-  <p><%= markdown(travel.content) %></p>
-  <h4>Etiquetas</h4>
-  <p><%= raw travel.tag_list.map{ |t| link_to t, tag_path(t) }.join(' ') %></p>
+
+  <%# ---- This was a piece of work. Showing some respect ---- %>
+
+
+  <div class="text-justify">
+    <p><%= markdown(travel.content) %></p>
+
+    <h4>Etiquetas</h4>
+    <p><%= raw travel.tag_list.map{ |t| link_to t, tag_path(t) }.join(' ') %>
   <% if travel.user == current_user %>
     <%= link_to 'edit', edit_travel_path(travel), class: 'edit-travel' %>
   <% end %>
-</div>
+  </div>
 
+</div>
