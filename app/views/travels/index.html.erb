@@ -1,5 +1,6 @@
 <%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
 <div class="row single-column-row">
+  <%= link_to 'New Travel', new_travel_path, class: 'link-new' %>
   <div class="col-md-8 col-md-offset-1">
     <%= render 'indexed', travels: @travels %>
   </div>
@@ -10,5 +11,3 @@
 
 <br>
 
-<%= link_to 'New Travel', new_travel_path %>
-<%= console %>

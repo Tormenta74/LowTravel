@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show]
+  before_action :set_travel, only: [:show, :destroy]
   before_action :set_travel_publish, only: [:publish, :hide] # this is really weird and I don't know how to get the routes to use the :id params
   before_action :authenticate_user!, except: [:show, :index] # with devise method
   # TODO: before_action :authenticate_admin!, only: [:publish, :hide] # with devise method

@@ -13,9 +13,9 @@
     <div class="collapse navbar-collapse" id="collapse">
       <ul class="nav navbar-nav nav-justified">
         <li class="active"><%= link_to 'Inicio', root_path %></li>
+        <li><%= link_to 'Viajes', travels_path %></li>
         <li><%= link_to 'LowCost', travels_path(tag: 'lowcost') %></li>
         <li><%= link_to 'Internacional', travels_path(tag: 'internacional') %></li>
-        <li><%= link_to 'Nacional', travels_path(tag: 'nacional') %></li>
         <li>
           <%= form_tag travels_path, class: 'navbar-form', method: :get do %>
             <%= search_field_tag(:tag, params[:tag], maxlength: 50, placeholder: 'Search...', class: 'form-control') %>

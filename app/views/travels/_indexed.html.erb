@@ -1,7 +1,15 @@
+<% if travels.empty? %>
+  <h2>There are no posts yet <span class="glyphicon glyphicon-plane"></span></h2>
+  <%= link_to 'Why not share your own?', new_travel_path %>
+<% end %>
 <% travels.each do |travel| %>
   <div class="row single-column-row travel-index">
     <div class="col-sm-4 travel-info">
-      <%= link_to image_tag(travel.facade) if travel.facade.present? %>
+      <% if travel.facade.present? %>
+        <%= link_to image_tag(travel.facade) if travel.facade.present? %>
+      <% else %>
+        <img src="/assets/thumbnail-placeholder-300x300" alt="">
+      <% end %>
       <h3><%= link_to travel.title, travel %> 
     </h3>
     <% if current_user == travel.user %>
