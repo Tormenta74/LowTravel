@@ -4,32 +4,33 @@
       <h2><%= pluralize(travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
 
       <ul>
-      <% travel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% travel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label :facade %>
-        <%= f.file_field :facade %>
-      </div>
-      <div class="field">
-        <%= f.label :tag_list, "Etiquetas (separadas por comas)" %>
-        <%= f.text_field :tag_list %>
-      </div>
+  <%# ----------------------------------- %>
+
+  <div class="row single-column-row travel-form">
+    <div class="col-md-4 travel-fields">
+      <% if travel.new_record? %>
+        <h1>New Travel</h1>
+      <% else %>
+        <h1><%= travel.title %></h1>
+      <% end %>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+      <%= f.label :tag_list, "Etiquetas (separadas por comas)" %><br>
+      <%= f.text_field :tag_list %>
+      <%= f.label :facade %><br>
+      <%= f.file_field :facade %>
       <div class="actions">
         <%= f.submit %>
         <% if !travel.new_record? %>
           <% if !travel.published and !travel.new_record? %>
-            <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'btn btn-success' %>
+            <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: '' %>
           <% else %>
             <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'btn btn-success' %>
           <% end %>

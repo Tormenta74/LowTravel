@@ -16,6 +16,8 @@
 //= require_tree .
 
 $( document ).ready( function() {
-    $('#slider').carousel();
 });
 
+document.addEventListener("turbolinks:load", function() {
+    $('#slider').carousel();
+})

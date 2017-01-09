@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  resources :users, only: [:show]
+
   resources :travels do
     put 'publish' => 'travels#publish'
     put 'hide' => 'travels#hide'

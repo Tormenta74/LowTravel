@@ -10,7 +10,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-
     <div id="content-container" class="container-fluid">
       <% flash.each do |key, value| %>
         <%= content_tag :div, value, class: "flash #{key} message" %>
