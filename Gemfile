@@ -15,6 +15,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'redcarpet', '~> 3.4'
+gem 'devise'
+gem 'validates_timeliness', '~> 4.0'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'acts-as-taggable-on', '~>4.0'
+gem 'autoprefixer-rails', '~> 6.6'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

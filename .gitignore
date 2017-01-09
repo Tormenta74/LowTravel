@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+#/db/*.sqlite3
+#/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -22,3 +22,5 @@
 
 node_modules/
 package.json
+backups/
+notes.txt

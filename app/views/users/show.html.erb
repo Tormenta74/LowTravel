@@ -1,0 +1,18 @@
+<%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
+<div class="row single-column-row profile">
+  <div class="col-md-2">
+    <div class="facade-container">
+      <div class="facade-image">
+        <%= link_to image_tag("/assets/traveller-placeholder-300x300"), notice: 'This functionality is not yet implemented' %>
+      </div>
+      <h2 class="facade-link">
+        <%= link_to @user.name, edit_user_registration_path(@user) %>
+      </h2>
+    </div>
+
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'travels/indexed', travels: @user.travels %>
+  </div>
+  </div>
+</div>

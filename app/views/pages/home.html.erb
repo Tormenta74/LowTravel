@@ -1,3 +1,22 @@
-<%# render 'layouts/navbar' %>
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render partial: 'layouts/slider' %>
+<% if @slides_providers.count > 0 %>
+  <%= render partial: 'layouts/navbar', locals: {navbar_offset: 370} %>
+<% else %>
+  <%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
+<% end %>
+
+<div class="row single-column-row">
+  <div class="col-md-3">
+    <aside id="archive">
+    </aside>
+  </div>
+  <div class="col-md-6 travel text-center">
+    <% if !@last_travel.nil? %>
+      <%= render @last_travel %> 
+    <% else %>
+      <h2>There are no posts yet <span class="glyphicon glyphicon-plane"></span></h2>
+      <%= link_to 'Why not share your own?', new_travel_path %>
+    <% end %>
+  </div>
+  <div class="col-md-3"></div>
+</div>

@@ -1,0 +1,60 @@
+<%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="row single-column-row registrations new">
+    <h2>Sign up!</h2>
+    <div class="col-md-4 col">
+      <h3 style="opacity:0;">Your data</h3>
+      <div class="avatar-container">
+        <img src="/assets/traveller-placeholder-300x300.jpg">
+      </div>
+      <table class="user-data">
+        <tr>
+          <td class="left"><%= f.label :email %></td>
+          <td class="right"><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+          <td class="left"><%= f.label :name %></td>
+          <td class="right "><%= f.text_field :name %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-4 col">
+      <h3>About you</h3>
+      <%= f.text_area :bio %><br>
+      <%= f.label :webpage %><br>
+      <%= f.text_field :webpage %><br>
+      <%= f.label :dob %><br>
+      <%= f.date_field :dob %><br>
+    </div>
+
+    <div class="col-md-4 col">
+      <h3 style="opacity:0;">Password</h3>
+      <table>
+        <tr>
+          <td class="left"><%= f.label :password, "Password" %></td>
+          <td class="right"><%= f.password_field :password, autocomplete: "off" %></td>
+        </tr>
+        <tr>
+          <td class="left"><%= f.label :password_confirmation, "Confirm password" %></td>
+          <td class="right"><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="single-row">
+            <% if @minimum_password_length %>
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="confirm well">
+        <%= f.submit "Sign up" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# render "devise/shared/links" %>
