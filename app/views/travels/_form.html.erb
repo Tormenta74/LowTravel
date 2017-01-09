@@ -1,28 +1,53 @@
+<%= render partial: 'layouts/navbar', locals: {navbar_offset: 70} %>
 <%= form_for(travel) do |f| %>
   <% if travel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
 
       <ul>
-      <% travel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% travel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-4">
+  <%# ----------------------------------- %>
+
+  <div class="row single-column-row travel-form">
+    <div class="col-md-4 travel-fields">
+      <% if travel.new_record? %>
+        <h2>New Travel</h2>
+      <% else %>
+        <h2>Editing: "<%= link_to travel.title, travel %>"</h2>
+      <% end %>
+      <br>
+      
       <div class="field">
-        <%= f.label :title %>
+        <%= f.label :title %><br>
         <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :tag_list, "Etiquetas (separadas por comas)" %><br>
+        <%= f.text_field :tag_list, value: travel.tag_list.to_s %>
+      </div>
+      <div class="field">
+        <%= f.label :facade %><br>
+        <%= f.file_field :facade %>
       </div>
       <div class="actions">
         <%= f.submit %>
+        <% if !travel.new_record? %>
+          <% if !travel.published and !travel.new_record? %>
+            <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'public' %>
+          <% else %>
+            <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'public' %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="field">
+      <div>
         <%= f.text_area :content %>
       </div>
       <p class="message">This content is actually be written in <a href="https://daringfireball.net/projects/markdown/">Markdown</a>. If you want to make it prettier, here is a useful <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">guide</a>.</p>

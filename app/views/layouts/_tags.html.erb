@@ -1,0 +1,6 @@
+<%# renders a p with the content of the tags %>
+<% if travel.tag_list.count == 0 %>
+  <p class="empty-tags">Este viaje no tiene etiquetas.</p>
+<% else %>
+  <p class="tags">Etiquetas: <%= raw travel.tag_list.map{ |t| link_to t, tag_path(t) }.join(', ') %></p>
+<% end %>

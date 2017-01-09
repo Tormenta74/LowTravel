@@ -1,11 +1,18 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :set_travel, only: [:show]
+  before_action :set_travel_publish, only: [:publish, :hide] # this is really weird and I don't know how to get the routes to use the :id params
   before_action :authenticate_user!, except: [:show, :index] # with devise method
+  # TODO: before_action :authenticate_admin!, only: [:publish, :hide] # with devise method
 
   # GET /travels
   # GET /travels.json
   def index
-    @travels = Travel.all
+    if params[:tag]
+      @travels = Travel.published.tagged_with(params[:tag])
+      flash[:notice] = "No hay viajes con esta etiqueta." unless @travels
+    else
+      @travels = Travel.most_recent.published
+    end
   end
 
   # GET /travels/1
@@ -20,6 +27,18 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
+    @travel = current_user.travels.find_by_id(params[:id])
+    redirect_to root_path, alert: 'El artículo referenciado no puede editarse.' unless @travel
+  end
+
+  def publish
+    @travel.publish
+    render :edit
+  end
+
+  def hide
+    @travel.hide
+    render :edit
   end
 
   # POST /travels
@@ -69,8 +88,12 @@ class TravelsController < ApplicationController
       @travel = Travel.find(params[:id])
     end
 
+    def set_travel_publish
+      @travel = Travel.find_by_id(params[:travel_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
-      params.require(:travel).permit(:title, :content)
+      params.require(:travel).permit(:title, :content, :facade, :tag_list)
     end
 end

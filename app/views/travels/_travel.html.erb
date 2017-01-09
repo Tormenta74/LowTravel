@@ -1,0 +1,28 @@
+<div class="travel well">
+
+  <%# ---- This was a piece of work. Showing some respect ---- %>
+
+  <div class="facade-container">
+    <div class="facade-image">
+      <%= image_tag(travel.facade) if travel.facade.present? %>
+    </div>
+    <h2 class="facade-link">
+      <%= link_to travel.title, travel_path(travel) %>
+      <small>by <%= link_to travel.user.name, travel.user %></small>
+    </h2>
+  </div>
+
+  <%# -------- %>
+
+
+  <div class="text-justify">
+    <p><%= markdown(travel.content) %></p>
+
+    <h4>Etiquetas</h4>
+    <%= render partial: 'layouts/tags', locals: {travel: travel} %>
+    <% if travel.user == current_user %>
+      <%= link_to 'edit', edit_travel_path(travel), class: 'edit-travel' %>
+    <% end %>
+  </div>
+
+</div>
