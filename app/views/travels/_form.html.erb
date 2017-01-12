@@ -39,9 +39,9 @@
         <%= f.submit %>
         <% if !travel.new_record? %>
           <% if !travel.published and !travel.new_record? %>
-            <%= link_to 'Publish', travel_publish_path(travel), method: :put, class: 'public' %>
+            <%= link_to 'Publish', publish_path(travel), method: :put, class: 'public' %>
           <% else %>
-            <%= link_to 'Hide', travel_hide_path(travel), method: :put, class: 'public' %>
+            <%= link_to 'Hide', hide_path(travel), method: :put, class: 'public' %>
             <%= link_to 'Delete travel', travel, method: :delete, data: { confirm: "This action cannot be undone. Do you want to continue?" }, class: 'public' %>
           <% end %>
         <% end %>
