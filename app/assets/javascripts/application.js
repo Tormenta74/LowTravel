@@ -15,9 +15,12 @@
 //= require turbolinks
 //= require_tree .
 
-$( document ).ready( function() {
-});
 
 document.addEventListener("turbolinks:load", function() {
     $('#slider').carousel();
+    $('.toggle-display').on('click', function () {
+        $(this).siblings('ul').toggleClass('archive-hide');
+        $(this).siblings('ul').toggleClass('archive-show');
+        $(this).toggleClass('open');
+    });
 })

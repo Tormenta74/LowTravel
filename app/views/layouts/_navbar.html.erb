@@ -18,8 +18,8 @@
         <li><%= link_to 'Internacional', travels_path(tag: 'internacional') %></li>
         <li>
           <%= form_tag travels_path, class: 'navbar-form', method: :get do %>
-            <%= search_field_tag(:tag, params[:tag], maxlength: 50, placeholder: 'Search...', class: 'form-control') %>
-          <% end %>
+              <%= search_field_tag :keywords, params[:keywords], class: 'form-control', placeholder: 'Buscar...' %>
+            <% end %>
         </li>
       </ul>
     </div>
