@@ -9,6 +9,10 @@ class Travel < ApplicationRecord
 
     scope :most_recent, -> { order(published_at: :desc) }
     scope :published, -> { where(published: true) }
+    scope :by_year_and_month, ->(year, month) {
+      date = Date.new(year,month)
+      where(published_at: date..date.next_month)
+    }
 
     def publish
       update(published: true, published_at: Time.now)

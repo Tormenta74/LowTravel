@@ -7,8 +7,7 @@
 
 <div class="row single-column-row">
   <div class="col-md-3">
-    <aside id="archive">
-    </aside>
+    <%= render partial: 'layouts/archive', locals: {archive_position: "left"} %>
   </div>
   <div class="col-md-6 travel text-center">
     <% if !@last_travel.nil? %>
@@ -20,3 +19,4 @@
   </div>
   <div class="col-md-3"></div>
 </div>
+<%= console %>

@@ -14,15 +14,26 @@
 
   <%# -------- %>
 
-
+  <hr>
   <div class="text-justify">
+    <p>Published at <%= travel.published_at %></p>
     <p><%= markdown(travel.content) %></p>
 
     <h4>Etiquetas</h4>
     <%= render partial: 'layouts/tags', locals: {travel: travel} %>
     <% if travel.user == current_user %>
-      <%= link_to 'edit', edit_travel_path(travel), class: 'edit-travel' %>
+      <%= link_to 'Edit', edit_travel_path(travel), class: 'edit-travel' %>
     <% end %>
+    <a href="" class="edit-travel" data-toggle="modal" data-target="#gallery">View Gallery</a>
+
+    <div id="gallery" class="modal fade" tabindex="-1" aria-labelledby="imageGallery">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <%= image_tag(travel.facade) if travel.facade.present? %>
+      </div>
+    </div>
   </div>
 
 </div>
