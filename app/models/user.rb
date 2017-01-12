@@ -9,6 +9,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, uniqueness: {case_sensitive: false}
   validates :slug, uniqueness: true
+  #validates_date :dob, :before => lambda { 18.years.ago  },
+      #:before_message => "must be at least 18 years old"
 
   has_many :travels
 
