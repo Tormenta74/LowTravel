@@ -1,8 +1,6 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show, :destroy]
-  before_action :set_travel_publish, only: [:publish, :hide] # this is really weird and I don't know how to get the routes to use the :id params
+  before_action :set_travel, only: [:show, :destroy, :publish, :hide]
   before_action :authenticate_user!, except: [:show, :index] # with devise method
-  # TODO: before_action :authenticate_admin!, only: [:publish, :hide] # with devise method
 
   # GET /travels
   # GET /travels.json
@@ -10,9 +8,15 @@ class TravelsController < ApplicationController
     if params[:tag]
       @travels = Travel.published.tagged_with(params[:tag])
       flash[:notice] = "No hay viajes con esta etiqueta." unless @travels
+    elsif params[:keywords]
+      @travels = Travel.with_title(params[:keywords])
+      flash[:notice] = "No hay viajes que coincidan con esta búsquea." unless @travels
     else
       @travels = Travel.most_recent.published
     end
+  end
+
+  def search
   end
 
   # GET /travels/1
@@ -27,7 +31,7 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
-    @travel = current_user.travels.find_by_id(params[:id])
+    @travel = current_user.travels.friendly.find(params[:id])
     redirect_to root_path, alert: 'El artículo referenciado no puede editarse.' unless @travel
   end
 
@@ -85,7 +89,7 @@ class TravelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_travel
-      @travel = Travel.find(params[:id])
+      @travel = Travel.friendly.find(params[:id])
     end
 
     def set_travel_publish

@@ -2,11 +2,12 @@
 <div class="row single-column-row profile">
   <div class="col-md-2">
     <div class="facade-container">
-      <div class="facade-image">
+      <div class="facade-image avatar">
         <%= link_to image_tag("/assets/traveller-placeholder-300x300"), notice: 'This functionality is not yet implemented' %>
       </div>
       <h2 class="facade-link">
-        <%= link_to @user.name, edit_user_registration_path(@user) %>
+        <%= link_to @user.name ,edit_user_registration_path(@user) %>
+        <span class="glyphicon glyphicon-pencil" style="font-size:60%;"></span>
       </h2>
     </div>
 

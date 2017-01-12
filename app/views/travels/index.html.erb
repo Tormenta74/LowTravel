@@ -5,9 +5,8 @@
     <%= render 'indexed', travels: @travels %>
   </div>
   <div class="col-md-3">
-    <aside></aside>
+    <%= render partial: 'layouts/archive', locals: {archive_position: "right"} %>
   </div>
 </div>
 
 <br>
-
