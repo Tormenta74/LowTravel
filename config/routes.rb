@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     put 'hide' => 'travels#hide'
   end
 
+  get 'search/:keywords' => 'travels#index', as: :search
   get 'tags/:tag' => 'travels#index', as: :tag
 
   get '/home' => 'pages#home', as: '/'

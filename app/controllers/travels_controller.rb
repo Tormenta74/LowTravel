@@ -10,9 +10,15 @@ class TravelsController < ApplicationController
     if params[:tag]
       @travels = Travel.published.tagged_with(params[:tag])
       flash[:notice] = "No hay viajes con esta etiqueta." unless @travels
+    elsif params[:keywords]
+      @travels = Travel.with_title(params[:keywords])
+      flash[:notice] = "No hay viajes que coincidan con esta búsquea." unless @travels
     else
       @travels = Travel.most_recent.published
     end
+  end
+
+  def search
   end
 
   # GET /travels/1

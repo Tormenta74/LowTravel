@@ -1,15 +1,17 @@
 <div class="archive <%= archive_position %>">
-  <% @displayed_months.reverse.each_with_index do | month, n | %>
+
+  <% @travels_per_month.each_with_index do |travels, n| %>
     <div class="archive-entry">
-      <span class="glyphicon glyphicon-play toggle-display" aria-hidden="true"> </span>
-      <%= link_to month, travels_path %>
+      <span class="glyphicon glyphicon-play toggle-display" aria-hidden="true"></span>
+      <%= link_to @displayed_months.reverse[n], travels_path %>
       <ul class="archive-hide">
-        <% @travels_per_month[n].each do |travels| %>
-          <% if travels.present? %>
-            <li><%= link_to travel %></li>
+        <% if !travels.empty? %>
+          <% travels.each do |travel| %>
+            <li><%= link_to travel.title.truncate(30), travel %></li>
           <% end %>
         <% end %>
       </ul>
     </div>
   <% end %>
+
 </div>

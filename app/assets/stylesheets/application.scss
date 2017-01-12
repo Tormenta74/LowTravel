@@ -224,12 +224,26 @@ textarea {
   }
 }
 
+#gallery {
+  .above-modal {
+    border-bottom:2px solid white;
+    padding: 25px 25px 25px 0;
+    background-color: rgba($main-color1,0.9)
+  }
+  .glyhicon {
+    font-size: 130%;
+  }
+}
+
 // ---- This took INCREDIBLY long to produce
 .facade-container {
   position: relative;
+  cursor: pointer;
+  text-align: center;
   .facade-image {
     position: relative;
     display: inline-block;
+    //margin: 0 auto;
   }
   .facade-image:after {
     content: '';
@@ -241,11 +255,14 @@ textarea {
     height: 100%;
     background: linear-gradient(to top,
     rgba(255,255,255,1),
-    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.88),
+    rgba(255,255,255,0.6),
     rgba(255,255,255,0.5),
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.3),
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.1),
     rgba(255,255,255,0));
-    pointer-events: none;
-    //pointer: cursor;
 
     img {
       display: block;
@@ -257,7 +274,7 @@ textarea {
     a {text-decoration: none;}
     position: absolute;
     bottom: 5%;
-    margin-left: 5%;
+    margin-left: 10%;
   }
 }
 
