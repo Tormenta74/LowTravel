@@ -91,7 +91,7 @@ class TravelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_travel
-      @travel = Travel.find(params[:id])
+      @travel = Travel.friendly.find(params[:id])
     end
 
     def set_travel_publish
